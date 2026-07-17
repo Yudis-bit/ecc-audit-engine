@@ -168,12 +168,11 @@ fi
 # Generate compact report
 ./scripts/generate_report.sh || FAILED=1
 
-# Hygiene: no personal absolute paths in tracked source (scripts + crates + docs)
+# Hygiene: no personal absolute paths / credential-looking tokens in tracked source
 echo "---- gate: no_personal_paths ----"
-if git -C "$REPO_ROOT" grep -nE '/home/arkheionx|arkheionx@|github_pat_|ghp_[A-Za-z0-9]{20,}' -- \
-  ':!reports/verification-run/raw/**' \
+if git -C "$REPO_ROOT" grep -nE '/home/[A-Za-z0-9._-]+/|github_pat_|ghp_[A-Za-z0-9]{20,}|BEGIN [A-Z ]*PRIVATE KEY' -- \
   ':!reports/**/raw/**' \
-  2>/dev/null | grep -v '^$' ; then
+  2>/dev/null | grep -v 'scripts/verify.sh' | grep -v '^$' ; then
   record "no_personal_paths" "FAIL"
   FAILED=1
 else
