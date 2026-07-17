@@ -26,3 +26,21 @@ reports/dynamic-trace/normalized/
 !reports/archive/**/manifest.txt
 !third_party/
 !third_party/README.md
+
+# publication / generated
+reports/publication-run/raw/
+reports/dynamic-trace/raw/
+reports/archive/pre-dynamic-trace/verification-run/
+reports/verification-run/raw/
+reports/verification-run/libsecp/
+reports/verification-run/reproducers/
+reports/verification-run/report.json
+reports/verification-run/report.md
+reports/verification-run/environment.json
+targets/ecc-trace-driver
+targets/libsecp256k1/
+targets/libsecp256k1-adapter*.so
+targets/calib-*.so
+targets/iso_*.so
+targets/*.so
+!targets/build-info.txt

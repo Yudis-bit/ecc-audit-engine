@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-07-17T12:44:06.519771",
+  "git_commit": "888075a4357ae7a0b92257c2dd96b5f8fa72e30a",
+  "branch": "master",
+  "status": " M targets/build-info.txt\n?? reports/archive/pre-dynamic-trace/verification-run/\n?? reports/publication-run/\n?? reports/verification-run/environment.json\n?? reports/verification-run/libsecp/\n?? reports/verification-run/report.json\n?? reports/verification-run/report.md\n?? reports/verification-run/reproducers/\n?? targets/ecc-trace-driver\n?? targets/libsecp256k1/\n?? third_party/valgrind/\n",
+  "upstream_pin": "remote=https://github.com/bitcoin-core/secp256k1.git\ncommit=11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53\ncommit_date=2026-07-16 17:34:50 +0200\n",
+  "corpus_sha256": "4af661f6597633433abfa26ca7df3add0c847eecebc85ddac7fd72ea8251bbee",
+  "verification_md": "8be2bdab467976c45df24bc40d2dab4829b2348daa6991ddcebd3d50812129b1",
+  "dyntrace_cal": "343634f389cda03c66e86a443ef5aa6112f12535603220ed0ba539d01bb76058",
+  "dyntrace_lib": "116b93320d9de902c668cae15418d8f9592d4defbd950a23cb272043d0b5dc27"
+}
