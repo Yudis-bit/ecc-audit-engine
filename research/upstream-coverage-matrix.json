@@ -1,0 +1,93 @@
+[
+  {
+    "operation": "secp256k1_ec_pubkey_create",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests run_tests"
+  },
+  {
+    "operation": "secp256k1_ecdsa_sign",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_ec_seckey_tweak_add",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_ec_seckey_tweak_mul",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_keypair_create",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests + extrakeys"
+  },
+  {
+    "operation": "secp256k1_keypair_xonly_tweak_add",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_schnorrsig_sign32",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_schnorrsig_sign_custom",
+    "implemented": true,
+    "ctime_tests": false,
+    "classification": "POSSIBLE_GAP",
+    "note": "not called in ctime_tests.c"
+  },
+  {
+    "operation": "secp256k1_ecdh",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_ecdsa_sign_recoverable",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests + recovery"
+  },
+  {
+    "operation": "secp256k1_ellswift_create",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_ellswift_xdh",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests"
+  },
+  {
+    "operation": "secp256k1_musig_partial_sign",
+    "implemented": true,
+    "ctime_tests": true,
+    "classification": "NO_GAP",
+    "note": "ctime_tests + musig"
+  }
+]
