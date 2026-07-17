@@ -1,5 +1,0 @@
-0000000000021a00 T secp256k1_ec_seckey_verify
-0000000000021aa0 T secp256k1_ec_pubkey_create
-0000000000021c90 T secp256k1_ec_seckey_negate
-0000000000021f40 T secp256k1_ec_seckey_tweak_add
-0000000000022290 T secp256k1_ec_seckey_tweak_mul

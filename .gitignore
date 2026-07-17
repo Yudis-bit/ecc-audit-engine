@@ -1,11 +1,27 @@
 /target/
 **/target/
 *.o
-targets/*.so
-targets/*.sha256
 *.a
 *.d
+*.log
+*.core
+core
 .DS_Store
+
+# Built lab targets (regenerate via scripts/build_targets.sh)
+targets/*.so
+targets/*.sha256
+targets/ecc-trace-driver
+targets/libsecp256k1/
+targets/iso_*.so
+!targets/build-info.txt
+
+# Upstream checkout and third-party builds (not vendored)
+targets-src/secp256k1/
+third_party/valgrind/
+third_party/sysroot/
+
+# Generated reports
 reports/latest/raw/*
 !reports/latest/raw/.gitkeep
 reports/latest/reproducers/*
@@ -15,32 +31,35 @@ reports/latest/report.md
 reports/latest/environment.json
 reports/latest/environment.txt
 reports/latest/build-matrix*
-targets-src/secp256k1/
-third_party/
-reports/archive/
+
 reports/dynamic-trace/raw/
 reports/dynamic-trace/normalized/
+reports/dynamic-trace/comparisons/
 
-!reports/archive/
-!reports/archive/**/
-!reports/archive/**/manifest.txt
-!third_party/
-!third_party/README.md
-
-# publication / generated
 reports/publication-run/raw/
-reports/dynamic-trace/raw/
-reports/archive/pre-dynamic-trace/verification-run/
+reports/readiness-run/generated/
+reports/readiness-run/raw/
+reports/readiness-run/verify.log
+reports/ci-smoke/
+reports/ci-smoke-corrupt/
+
 reports/verification-run/raw/
 reports/verification-run/libsecp/
 reports/verification-run/reproducers/
 reports/verification-run/report.json
 reports/verification-run/report.md
 reports/verification-run/environment.json
-targets/ecc-trace-driver
-targets/libsecp256k1/
-targets/libsecp256k1-adapter*.so
-targets/calib-*.so
-targets/iso_*.so
-targets/*.so
-!targets/build-info.txt
+
+reports/archive/pre-dynamic-trace/verification-run/
+
+# Keep published summaries, research matrices, and archive manifests
+!reports/archive/
+!reports/archive/**/
+!reports/archive/**/manifest.txt
+!reports/archive/**/manifest.json
+!third_party/
+!third_party/README.md
+
+# Local corpus smoke files
+fixtures/corpus-ci.json
+fixtures/corpus-ci-2.json
