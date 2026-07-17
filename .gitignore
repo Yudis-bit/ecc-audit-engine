@@ -16,3 +16,13 @@ reports/latest/environment.json
 reports/latest/environment.txt
 reports/latest/build-matrix*
 targets-src/secp256k1/
+third_party/
+reports/archive/
+reports/dynamic-trace/raw/
+reports/dynamic-trace/normalized/
+
+!reports/archive/
+!reports/archive/**/
+!reports/archive/**/manifest.txt
+!third_party/
+!third_party/README.md

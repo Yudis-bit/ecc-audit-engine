@@ -4,6 +4,7 @@
  * Synthetic keys / laboratory use only.
  */
 #include "../../crates/target-api/include/ecc_target.h"
+#include "../trace-driver/trace_markers.h"
 #include "secp256k1.h"
 #include <string.h>
 #include <stdlib.h>
@@ -41,7 +42,11 @@ int ecc_target_pubkey_create(
     if (!secp256k1_ec_seckey_verify(g_ctx, secret_key))
         return ECC_TARGET_REJECT;
     secp256k1_pubkey pk;
-    if (!secp256k1_ec_pubkey_create(g_ctx, &pk, secret_key))
+    /* Trace region: public-key creation only (markers outside upstream). */
+    ecc_trace_region_begin();
+    int ok = secp256k1_ec_pubkey_create(g_ctx, &pk, secret_key);
+    ecc_trace_region_end();
+    if (!ok)
         return ECC_TARGET_REJECT;
     size_t len = 65;
     if (!secp256k1_ec_pubkey_serialize(

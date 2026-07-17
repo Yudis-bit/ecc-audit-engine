@@ -1,0 +1,6 @@
+{
+  "name": "valgrind",
+  "version": "valgrind-3.22.0",
+  "path": "./third_party/valgrind/bin/valgrind",
+  "tool": "lackey"
+}

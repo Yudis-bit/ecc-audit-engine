@@ -120,6 +120,7 @@ dependencies = [
  "clap",
  "corpus",
  "differential",
+ "dyntrace",
  "hex",
  "minimizer",
  "model",
@@ -127,6 +128,7 @@ dependencies = [
  "runner",
  "serde",
  "serde_json",
+ "sha2",
  "target-api",
  "timing",
  "toml",
@@ -193,6 +195,18 @@ checksum = "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292"
 dependencies = [
  "block-buffer",
  "crypto-common",
+]
+
+[[package]]
+name = "dyntrace"
+version = "0.1.0"
+dependencies = [
+ "hex",
+ "rand",
+ "serde",
+ "serde_json",
+ "sha2",
+ "thiserror",
 ]
 
 [[package]]

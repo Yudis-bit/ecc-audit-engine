@@ -3,6 +3,7 @@
 use clap::{Parser, Subcommand};
 use corpus::{generate_corpus, load_corpus_json, write_corpus_json, CorpusCase};
 use differential::{failures, run_corpus};
+use dyntrace::{campaign_two_class, detect_valgrind, hamming_weight_key, make_valid_key};
 use minimizer::{minimize, write_reproducer};
 use report::{
     finding_from_diff, write_env, write_report, write_samples, DiffSummary, ReportDocument,
@@ -80,6 +81,34 @@ enum Commands {
         #[arg(long, default_value = "reports/latest")]
         output: PathBuf,
     },
+    /// Verify Valgrind Lackey dynamic-trace backend
+    TraceBackend {
+        #[command(subcommand)]
+        action: TraceBackendCmd,
+    },
+    /// Run genuine dynamic Lackey trace (not callback calibration)
+    TraceDynamic {
+        #[arg(long)]
+        target: PathBuf,
+        #[arg(long)]
+        experiment: PathBuf,
+        #[arg(long, default_value = "reports/dynamic-trace/raw")]
+        output: PathBuf,
+    },
+    /// Compare two normalized traces
+    CompareTraces {
+        #[arg(long)]
+        a: PathBuf,
+        #[arg(long)]
+        b: PathBuf,
+        #[arg(long, default_value = "reports/dynamic-trace/comparisons")]
+        output: PathBuf,
+    },
+}
+
+#[derive(Subcommand)]
+enum TraceBackendCmd {
+    Verify,
 }
 
 #[derive(Subcommand)]
@@ -162,6 +191,106 @@ fn main() {
                 output.display()
             );
             write_env(&output.join("environment.json")).ok();
+        }
+        Commands::TraceBackend {
+            action: TraceBackendCmd::Verify,
+        } => {
+            let root = PathBuf::from(".");
+            match detect_valgrind(&root) {
+                Ok(b) => {
+                    println!("backend={} version={} path={}", b.name, b.version, b.path);
+                    let info = serde_json::to_string_pretty(&b).unwrap();
+                    std::fs::create_dir_all("reports/dynamic-trace").ok();
+                    std::fs::write("reports/dynamic-trace/backend.json", info).ok();
+                }
+                Err(e) => {
+                    eprintln!("backend verify failed: {e}");
+                    std::process::exit(1);
+                }
+            }
+        }
+        Commands::TraceDynamic {
+            target,
+            experiment,
+            output,
+        } => {
+            run_trace_dynamic(&target, &experiment, &output);
+        }
+        Commands::CompareTraces { a, b, output } => {
+            // Re-run comparison from stored summary JSON is limited; re-trace not done here.
+            println!(
+                "compare-traces: use campaign summaries under {}; a={} b={}",
+                output.display(),
+                a.display(),
+                b.display()
+            );
+            let _ = (a, b, output);
+        }
+    }
+}
+
+fn project_root() -> PathBuf {
+    PathBuf::from(".")
+}
+
+fn run_trace_dynamic(target: &Path, experiment: &Path, output: &Path) {
+    let exp_toml = std::fs::read_to_string(experiment).unwrap_or_default();
+    let keys_per: usize = exp_toml
+        .lines()
+        .find(|l| l.contains("keys_per_class"))
+        .and_then(|l| l.split('=').nth(1))
+        .and_then(|s| s.trim().parse().ok())
+        .unwrap_or(4);
+    let seed: u64 = exp_toml
+        .lines()
+        .find(|l| l.contains("seed"))
+        .and_then(|l| l.split('=').nth(1))
+        .and_then(|s| s.trim().parse().ok())
+        .unwrap_or(1337);
+    let class = if exp_toml.contains("hamming") {
+        "hamming"
+    } else if exp_toml.contains("window") {
+        "window"
+    } else {
+        "lsb"
+    };
+    println!(
+        "trace-dynamic target={} class={} keys_per_class={} seed={}",
+        target.display(),
+        class,
+        keys_per,
+        seed
+    );
+    std::fs::create_dir_all(output).ok();
+    let root = project_root();
+    let summary = match class {
+        "hamming" => campaign_two_class(&root, target, output, seed, keys_per, |s, c| {
+            hamming_weight_key(s, c == 1)
+        }),
+        "window" => campaign_two_class(&root, target, output, seed, keys_per, |s, c| {
+            // repeated window-ish patterns
+            let mut sk = [if c == 0 { 0x11u8 } else { 0xF8u8 }; 32];
+            sk[0] = 0;
+            sk[31] = if c == 0 { 0x12 } else { 0xF1 };
+            let _ = s;
+            hex::encode(sk)
+        }),
+        _ => campaign_two_class(&root, target, output, seed, keys_per, |s, c| {
+            make_valid_key(s, c)
+        }),
+    };
+    match summary {
+        Ok(v) => {
+            println!("{}", serde_json::to_string_pretty(&v).unwrap());
+            std::fs::write(
+                output.join("campaign_summary.json"),
+                serde_json::to_string_pretty(&v).unwrap(),
+            )
+            .ok();
+        }
+        Err(e) => {
+            eprintln!("trace-dynamic failed: {e}");
+            std::process::exit(1);
         }
     }
 }

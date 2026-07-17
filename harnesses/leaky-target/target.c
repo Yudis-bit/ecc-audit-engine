@@ -7,6 +7,7 @@
  */
 #include "../../crates/target-api/include/ecc_target.h"
 #include "../common/secp_mini.h"
+#include "../trace-driver/trace_markers.h"
 #include <string.h>
 
 #ifndef LEAK_MODE
@@ -32,8 +33,9 @@ int ecc_target_pubkey_create(
     if (!secret_key || !output || secret_key_len != 32 || output_len < 65)
         return ECC_TARGET_INTERNAL_ERROR;
 
+ecc_trace_region_begin();
 #if LEAK_MODE == 1
-    /* PLANTED: secret-dependent branch */
+    /* PLANTED: secret-dependent branch (observed via dynamic trace, not callbacks) */
     if (secret_key[31] & 1) {
         g_leak_counter++;
     }
@@ -46,19 +48,19 @@ int ecc_target_pubkey_create(
         (void)g_sink;
     }
 #elif LEAK_MODE == 0
-    /* CONTROL: touch all table entries and both branch sides equivalently */
+    /* CONTROL: touch all table entries equivalently */
     {
         volatile unsigned long long acc = 0;
         for (unsigned i = 0; i < 16; i++) {
             acc += secret_table[i][0];
         }
-        /* branchless counter update using mask */
         unsigned long long lsb = (unsigned long long)(secret_key[31] & 1);
-        g_leak_counter += lsb * 0; /* no-op but data-dependent arithmetic only */
+        g_leak_counter += lsb * 0;
         (void)acc;
         g_last_table_index = 0xff;
     }
 #endif
+    ecc_trace_region_end();
 
     u256 sk;
     u256_from_be(&sk, secret_key);

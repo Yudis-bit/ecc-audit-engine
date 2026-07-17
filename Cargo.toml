@@ -10,6 +10,7 @@ members = [
   "crates/trace",
   "crates/minimizer",
   "crates/report",
+  "crates/dyntrace",
   "crates/cli",
 ]
 
@@ -40,3 +41,4 @@ timing = { path = "crates/timing" }
 trace = { path = "crates/trace" }
 minimizer = { path = "crates/minimizer" }
 report = { path = "crates/report" }
+dyntrace = { path = "crates/dyntrace" }

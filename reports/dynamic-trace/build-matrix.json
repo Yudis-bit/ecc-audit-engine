@@ -1,0 +1,49 @@
+{
+  "builds": [
+    {
+      "path": "targets/libsecp256k1-adapter-gcc-O2-asm.so",
+      "sha256": "d485aed04aed6227703d96cc49bcf1474f402fc7721e8389dac28f5bc19d24e7",
+      "size": 24416
+    },
+    {
+      "path": "targets/libsecp256k1-adapter-gcc-O2-dbg.so",
+      "sha256": "ae58dd84df25935c8ff2589f2c05bc8c4b9aea6d105fc68db4dd8a97f873aec7",
+      "size": 24416
+    },
+    {
+      "path": "targets/libsecp256k1-adapter-gcc-O2-noasm.so",
+      "sha256": "be1385db065c2b483e63b75d1ac1c488715f41264e666c4dbe61d6e147617ff6",
+      "size": 24416
+    },
+    {
+      "path": "targets/libsecp256k1-adapter-gcc-O2-verify.so",
+      "sha256": "fb508ab6246164323a4bd4774019d3b399fd91e40751be570c3e45d0b3921ac2",
+      "size": 24416
+    },
+    {
+      "path": "targets/libsecp256k1-adapter-gcc-O2.so",
+      "sha256": "6ce710892942707f0775e4e9bf9d5ee25233c1861efc4361e45cc689b65b91f9",
+      "size": 24416
+    },
+    {
+      "path": "targets/libsecp256k1-adapter-gcc-O3.so",
+      "sha256": "5ffe136f7d8b6dc4452f1842cf715a3dfc355f778722c9e11f50c4e9e4157d95",
+      "size": 24416
+    },
+    {
+      "path": "targets/calib-branch.so",
+      "sha256": "9990b1b298abd549c77605d35855f6f2ddf060c16cba339fd6f7997466dd3035",
+      "size": 20568
+    },
+    {
+      "path": "targets/calib-control.so",
+      "sha256": "7e08c0c2c52cc8ac2ee455613403495a7a4b55b3857cf216c3c712db3b0e2615",
+      "size": 19872
+    },
+    {
+      "path": "targets/calib-table.so",
+      "sha256": "5e9ee8a0480caff5322a2fe57cc8e3c8c5b4d67bf7828ea97d8e8812d3546dbc",
+      "size": 19704
+    }
+  ]
+}

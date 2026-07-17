@@ -1,0 +1,10 @@
+[experiment]
+name = "dynamic-trace-leaky-table"
+seed = 1337
+keys_per_class = 4
+class = "lsb"
+backend = "valgrind-lackey"
+
+[target]
+path = "targets/leaky-table--O2.so"
+operation = "pubkey_create"

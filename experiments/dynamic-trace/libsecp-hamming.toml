@@ -1,0 +1,10 @@
+[experiment]
+name = "dynamic-trace-libsecp-hamming"
+seed = 43
+keys_per_class = 8
+class = "hamming"
+backend = "valgrind-lackey"
+
+[target]
+path = "targets/libsecp256k1-adapter-gcc-O2-dbg.so"
+operation = "pubkey_create"

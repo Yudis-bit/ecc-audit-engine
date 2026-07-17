@@ -1,0 +1,12 @@
+[experiment]
+name = "dynamic-trace-libsecp-lsb"
+seed = 42
+keys_per_class = 8
+class = "lsb"
+backend = "valgrind-lackey"
+repetitions = 3
+
+[target]
+path = "targets/libsecp256k1-adapter-gcc-O2-dbg.so"
+operation = "pubkey_create"
+upstream_commit = "11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53"

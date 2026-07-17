@@ -1,0 +1,10 @@
+[experiment]
+name = "dynamic-trace-libsecp-window"
+seed = 44
+keys_per_class = 8
+class = "window"
+backend = "valgrind-lackey"
+
+[target]
+path = "targets/libsecp256k1-adapter-gcc-O2-dbg.so"
+operation = "pubkey_create"

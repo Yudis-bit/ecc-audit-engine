@@ -19,8 +19,10 @@ minimizer = { workspace = true }
 trace = { workspace = true }
 timing = { workspace = true }
 report = { workspace = true }
+dyntrace = { workspace = true }
 target-api = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 toml = { workspace = true }
 hex = { workspace = true }
+sha2 = { workspace = true }
