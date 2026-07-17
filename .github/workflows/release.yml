@@ -1,0 +1,52 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@1.97.0
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: mandatory checks
+        run: |
+          cargo fmt --all --check
+          cargo clippy --workspace --all-targets --all-features -- -D warnings
+          cargo test --workspace --all-features --locked -- --nocapture
+          cargo run -q -p cli -- model self-test
+          ./scripts/build_targets.sh
+          python3 scripts/validate_schemas.py
+          for s in scripts/*.sh; do bash -n "$s"; done
+
+      - name: package source archive checksums
+        run: |
+          mkdir -p dist
+          git archive --format=tar.gz --prefix="ecc-audit-engine-${GITHUB_REF_NAME}/" -o "dist/ecc-audit-engine-${GITHUB_REF_NAME}.tar.gz" HEAD
+          (cd dist && sha256sum *.tar.gz > SHA256SUMS.txt)
+          cat dist/SHA256SUMS.txt
+
+      - name: create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*.tar.gz
+            dist/SHA256SUMS.txt
+          body: |
+            See CHANGELOG.md and docs/release-process.md.
+
+            Synthetic keys only. No production vulnerability is claimed by this release tooling.
+            Do not treat attached archives as trusted production cryptographic libraries.

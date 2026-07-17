@@ -1,0 +1,63 @@
+name: extended-trace
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly Sunday 04:00 UTC
+    - cron: "0 4 * * 0"
+
+permissions:
+  contents: read
+
+jobs:
+  trace-calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@1.97.0
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: install valgrind and build deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y valgrind build-essential cmake autoconf automake libtool pkg-config clang
+
+      - name: build workspace and targets
+        run: |
+          cargo build --workspace --locked
+          ./scripts/build_targets.sh
+
+      - name: backend verify
+        run: cargo run -q -p cli -- trace-backend verify
+
+      - name: synthetic branch/table/control calibration
+        env:
+          ECC_REPORT_DIR: reports/readiness-run/generated
+        run: ./scripts/run_trace_calibration.sh
+
+      - name: pinned libsecp baseline (bounded)
+        env:
+          ECC_REPORT_DIR: reports/readiness-run/generated
+        run: ./scripts/run_libsecp_baseline.sh
+
+      - name: generate compact report
+        env:
+          ECC_REPORT_DIR: reports/readiness-run/generated
+        run: ./scripts/generate_report.sh
+
+      - name: upload compact artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: extended-trace-reports
+          path: |
+            reports/readiness-run/generated/*.json
+            reports/readiness-run/generated/*.md
+            reports/readiness-run/generated/table-address-status.txt
+            reports/dynamic-trace/backend.json
+          retention-days: 14
+          if-no-files-found: warn

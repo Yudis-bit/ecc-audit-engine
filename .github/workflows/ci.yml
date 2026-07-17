@@ -5,19 +5,87 @@ on:
     branches: [master, main]
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: dtolnay/rust-toolchain@1.97.0
         with:
           components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
       - name: fmt
         run: cargo fmt --all --check
+
       - name: clippy
         run: cargo clippy --workspace --all-targets --all-features -- -D warnings
-      - name: test
-        run: cargo test --workspace --all-features -- --nocapture
+
+      - name: test locked
+        run: cargo test --workspace --all-features --locked -- --nocapture
+
       - name: model self-test
         run: cargo run -q -p cli -- model self-test
+
+      - name: build lab targets
+        run: ./scripts/build_targets.sh
+
+      - name: corpus generate deterministic
+        run: |
+          cargo run -q -p cli -- corpus generate --seed 1337 --output fixtures/corpus-ci.json
+          cargo run -q -p cli -- corpus generate --seed 1337 --output fixtures/corpus-ci-2.json
+          test "$(sha256sum fixtures/corpus-ci.json | awk '{print $1}')" = "$(sha256sum fixtures/corpus-ci-2.json | awk '{print $1}')"
+
+      - name: differential correct smoke
+        run: |
+          cargo run -q -p cli -- differential \
+            --target targets/correct-target.so \
+            --corpus fixtures/corpus-ci.json \
+            --output reports/ci-smoke
+
+      - name: differential corrupted + minimizer smoke
+        run: |
+          cargo run -q -p cli -- differential \
+            --target targets/corrupted-target.so \
+            --corpus fixtures/corpus-ci.json \
+            --minimize \
+            --output reports/ci-smoke-corrupt
+          test -n "$(ls reports/ci-smoke-corrupt/reproducers/MIN-*.json 2>/dev/null | head -1)"
+
+      - name: schema validation
+        run: python3 scripts/validate_schemas.py
+
+      - name: shell syntax check
+        run: |
+          for s in scripts/*.sh; do
+            bash -n "$s"
+            echo "ok syntax $s"
+          done
+
+  matrix-compiler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.97.0
+      - name: install clang
+        if: matrix.cc == 'clang'
+        run: sudo apt-get update && sudo apt-get install -y clang
+      - name: build targets with ${{ matrix.cc }}
+        env:
+          CC: ${{ matrix.cc }}
+        run: ./scripts/build_targets.sh
