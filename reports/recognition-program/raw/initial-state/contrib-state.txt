@@ -1,0 +1,8 @@
+branch=yudis/ctime-cover-schnorrsig-sign-custom
+commit=c64c477b095d9b4c9acdf625875d6f9d81def57e
+author=Yudistira Putra <85178972+Yudis-bit@users.noreply.github.com>
+upstream_master=11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53
+behind=0
+ahead=1
+ src/ctime_tests.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)

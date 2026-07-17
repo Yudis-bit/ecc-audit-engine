@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ecc-audit-engine"
+type: software
+authors:
+  - family-names: "Putra"
+    given-names: "Yudistira"
+    alias: "Yudis-bit"
+repository-code: "https://github.com/Yudis-bit/ecc-audit-engine"
+url: "https://github.com/Yudis-bit/ecc-audit-engine"
+license: MIT
+version: "0.2.0"
+date-released: "2026-07-17"
+abstract: >-
+  Reproducible secp256k1 correctness, differential-testing, failure-minimization,
+  and dynamic-trace research engine for authorized laboratory assurance work.
+keywords:
+  - secp256k1
+  - cryptography
+  - constant-time
+  - differential-testing
+  - valgrind
+  - security-research
+references:
+  - type: software
+    title: "libsecp256k1"
+    authors:
+      - name: "Bitcoin Core developers and contributors"
+    repository-code: "https://github.com/bitcoin-core/secp256k1"

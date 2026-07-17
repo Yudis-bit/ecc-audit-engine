@@ -1,0 +1,33 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "ecc-audit-engine",
+  "description": "Reproducible secp256k1 correctness, differential-testing, failure-minimization, and dynamic-trace research engine.",
+  "codeRepository": "https://github.com/Yudis-bit/ecc-audit-engine",
+  "url": "https://github.com/Yudis-bit/ecc-audit-engine",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0",
+  "datePublished": "2026-07-17",
+  "programmingLanguage": [
+    "Rust",
+    "C",
+    "Python",
+    "Shell"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Yudistira",
+      "familyName": "Putra",
+      "identifier": "https://github.com/Yudis-bit"
+    }
+  ],
+  "keywords": [
+    "secp256k1",
+    "cryptography",
+    "constant-time",
+    "differential-testing",
+    "valgrind",
+    "security-research"
+  ]
+}

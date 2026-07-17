@@ -1,0 +1,44 @@
+{
+  "schema_version": "upstream-opportunity-register-v1",
+  "updated_utc": "2026-07-17T18:00:00Z",
+  "candidates": [
+    {
+      "id": "UOP-001",
+      "repository": "bitcoin-core/secp256k1",
+      "subsystem": "ctime_tests",
+      "file": "src/ctime_tests.c",
+      "status": "READY_FOR_PATCH",
+      "pr": "https://github.com/bitcoin-core/secp256k1/pull/1893",
+      "production_code_impact": false
+    },
+    {
+      "id": "UOP-002",
+      "repository": "bitcoin-core/secp256k1",
+      "subsystem": "ctime_tests",
+      "file": "src/ctime_tests.c",
+      "status": "NEEDS_EVIDENCE",
+      "note": "custom noncefp path for sign_custom"
+    },
+    {
+      "id": "UOP-003",
+      "repository": "bitcoin-core/secp256k1",
+      "subsystem": "api-docs",
+      "status": "NEEDS_EVIDENCE",
+      "related_pr": 1875
+    },
+    {
+      "id": "UOP-004",
+      "repository": "bitcoin-core/secp256k1",
+      "subsystem": "toolchain-docs",
+      "status": "NEEDS_EVIDENCE",
+      "related_pr": 1874
+    },
+    {
+      "id": "UOP-005",
+      "repository": "bitcoin/bitcoin",
+      "subsystem": "src/secp256k1 subtree",
+      "status": "REJECTED_NO_GAP",
+      "note": "self-import PR not justified"
+    }
+  ]
+}
