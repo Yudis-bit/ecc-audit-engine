@@ -1,0 +1,15 @@
+[experiment]
+name = "synthetic-lsb-branch"
+seed = 1337
+warmup_iterations = 100
+samples_per_class = 200
+randomized_order = true
+
+[target]
+name = "leaky-branch"
+path = "targets/leaky-branch.so"
+operation = "pubkey_create"
+
+[classes]
+class_a = "lsb_zero"
+class_b = "lsb_one"

@@ -1,0 +1,8 @@
+[experiment]
+name = "synthetic-table-index"
+seed = 1337
+
+[target]
+name = "leaky-table"
+path = "targets/leaky-table.so"
+operation = "pubkey_create"

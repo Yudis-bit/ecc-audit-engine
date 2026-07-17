@@ -1,0 +1,17 @@
+/target/
+**/target/
+*.o
+targets/*.so
+targets/*.sha256
+*.a
+*.d
+.DS_Store
+reports/latest/raw/*
+!reports/latest/raw/.gitkeep
+reports/latest/reproducers/*
+!reports/latest/reproducers/.gitkeep
+reports/latest/report.json
+reports/latest/report.md
+reports/latest/environment.json
+reports/latest/environment.txt
+reports/latest/build-matrix*

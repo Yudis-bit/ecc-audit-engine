@@ -1,0 +1,14 @@
+[package]
+name = "model"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Auditable secp256k1 BigUint reference model"
+
+[dependencies]
+num-bigint = { workspace = true, features = ["serde"] }
+num-traits = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+hex = { workspace = true }

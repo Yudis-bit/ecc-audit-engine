@@ -1,0 +1,4 @@
+compiler=cc
+cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+arch=x86_64
+date=2026-07-17T11:11:57-04:00

@@ -1,0 +1,14 @@
+[experiment]
+name = "build-matrix"
+description = "Local C target build matrix"
+
+[compilers]
+cc = "cc"
+
+[optimizations]
+levels = ["-O0", "-O2", "-O3", "-O3 -flto"]
+
+[targets]
+correct = "harnesses/correct-target"
+corrupted = "harnesses/corrupted-target"
+leaky = "harnesses/leaky-target"

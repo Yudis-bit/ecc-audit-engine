@@ -1,0 +1,11 @@
+[experiment]
+name = "differential-corrupted"
+seed = 1337
+minimize = true
+
+[target]
+name = "corrupted-target"
+path = "targets/corrupted-target.so"
+
+[corpus]
+path = "fixtures/corpus-v1.json"

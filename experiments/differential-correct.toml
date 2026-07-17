@@ -1,0 +1,10 @@
+[experiment]
+name = "differential-correct"
+seed = 1337
+
+[target]
+name = "correct-target"
+path = "targets/correct-target.so"
+
+[corpus]
+path = "fixtures/corpus-v1.json"

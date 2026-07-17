@@ -1,0 +1,13 @@
+[package]
+name = "runner"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Load and execute local C targets via FFI"
+
+[dependencies]
+target-api = { workspace = true }
+libloading = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
