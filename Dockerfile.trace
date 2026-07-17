@@ -1,0 +1,22 @@
+# Extended image with Valgrind for synthetic dynamic-trace calibration.
+FROM rust:1.97-bookworm
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    clang \
+    cmake \
+    autoconf \
+    automake \
+    libtool \
+    pkg-config \
+    git \
+    python3 \
+    ca-certificates \
+    valgrind \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+COPY . .
+RUN chmod +x scripts/*.sh scripts/*.py || true
+
+CMD ["./scripts/verify.sh"]

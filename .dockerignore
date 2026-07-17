@@ -1,0 +1,17 @@
+.git
+target
+targets/*.so
+targets/*.sha256
+targets/ecc-trace-driver
+targets/libsecp256k1
+targets-src/secp256k1
+third_party/valgrind
+third_party/sysroot
+reports/**/raw
+reports/dynamic-trace/raw
+reports/publication-run
+reports/readiness-run/generated
+reports/archive
+*.log
+*.core
+core
