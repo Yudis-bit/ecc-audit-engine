@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Yudis-bit/ecc-audit-engine/schemas/finding-v1.schema.json",
+  "title": "ecc-audit-engine finding v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "classification",
+    "engine_commit",
+    "target_binary_hash",
+    "compiler",
+    "build_flags",
+    "backend",
+    "corpus_hash",
+    "experiment_seed",
+    "operation",
+    "sample_count",
+    "result",
+    "limitations",
+    "reproduction_command"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["finding-v1"] },
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "Synthetic calibration findings",
+        "Controlled corrupted-fixture findings",
+        "Real upstream findings",
+        "Negative results",
+        "Inconclusive results",
+        "Unsupported capabilities"
+      ]
+    },
+    "engine_commit": { "type": "string" },
+    "target_commit": { "type": ["string", "null"] },
+    "target_binary_hash": { "type": "string" },
+    "compiler": { "type": "string" },
+    "build_flags": { "type": "string" },
+    "backend": { "type": "string" },
+    "corpus_hash": { "type": "string" },
+    "experiment_seed": { "type": "integer" },
+    "operation": { "type": "string" },
+    "sample_count": { "type": "integer" },
+    "result": { "type": "string" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reproduction_command": { "type": "string" }
+  },
+  "additionalProperties": true
+}

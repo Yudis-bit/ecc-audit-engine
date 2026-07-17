@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Yudis-bit/ecc-audit-engine/schemas/trace-v1.schema.json",
+  "title": "ecc-audit-engine dynamic trace summary v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engine_commit",
+    "target_binary_hash",
+    "backend",
+    "backend_version",
+    "operation",
+    "experiment_seed",
+    "sample_count",
+    "result",
+    "instruction_module_relative_offsets_equal",
+    "static_mem_set_equal",
+    "static_cache_line_set_equal",
+    "control_clean",
+    "limitations",
+    "reproduction_command"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["trace-v1"] },
+    "engine_commit": { "type": "string" },
+    "target_commit": { "type": ["string", "null"] },
+    "target_binary_hash": { "type": "string" },
+    "compiler": { "type": "string" },
+    "build_flags": { "type": "string" },
+    "backend": { "type": "string" },
+    "backend_version": { "type": "string" },
+    "corpus_hash": { "type": "string" },
+    "operation": { "type": "string" },
+    "experiment_seed": { "type": "integer" },
+    "sample_count": { "type": "integer" },
+    "result": { "type": "string" },
+    "instruction_module_relative_offsets_equal": { "type": "boolean" },
+    "static_mem_set_equal": { "type": "boolean" },
+    "static_cache_line_set_equal": { "type": "boolean" },
+    "first_address_divergence": { "type": ["string", "null"] },
+    "cache_line_ids": {
+      "type": "array",
+      "items": { "type": "integer" }
+    },
+    "control_clean": { "type": "boolean" },
+    "identical_input_stable": { "type": "boolean" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reproduction_command": { "type": "string" }
+  },
+  "additionalProperties": true
+}

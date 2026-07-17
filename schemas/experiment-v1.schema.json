@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Yudis-bit/ecc-audit-engine/schemas/experiment-v1.schema.json",
+  "title": "ecc-audit-engine experiment report v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engine_commit",
+    "corpus_hash",
+    "experiment_seed",
+    "operation",
+    "result",
+    "limitations",
+    "reproduction_command"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["experiment-v1"] },
+    "kind": { "type": "string" },
+    "generated_at_utc": { "type": "string" },
+    "engine_commit": { "type": "string" },
+    "engine_branch": { "type": "string" },
+    "repository_url": { "type": "string" },
+    "target_commit": { "type": ["string", "null"] },
+    "target_binary_hash": { "type": ["string", "null"] },
+    "compiler": { "type": "string" },
+    "build_flags": { "type": "string" },
+    "backend": { "type": ["string", "object"] },
+    "corpus_hash": { "type": "string" },
+    "experiment_seed": { "type": "integer" },
+    "operation": { "type": "string" },
+    "sample_count": { "type": ["integer", "null"] },
+    "result": { "type": "string" },
+    "table_address_status": { "type": "string" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reproduction_command": { "type": "string" },
+    "trace_calibration": { "type": ["object", "null"] },
+    "libsecp_baseline": { "type": ["object", "null"] },
+    "schema_validation": { "type": "object" }
+  },
+  "additionalProperties": true
+}
