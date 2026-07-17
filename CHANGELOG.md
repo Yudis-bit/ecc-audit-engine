@@ -1,21 +1,38 @@
 # Changelog
 
-## 0.1.0
+## [0.2.0] — 2026-07-17
 
-### Verified capabilities
+### Added
 
-- Auditable BigUint secp256k1 reference model with known generator vectors.
-- Deterministic structured corpus (seed 1337, 148 cases).
-- Stable C ABI and mini-C correct / corrupted / leaky harnesses.
-- Differential testing against the reference model; planted corruption isolation map.
-- Input minimizer with replay of minimized reproducers.
-- Valgrind Lackey dynamic-trace backend with region markers (non-callback).
-- Synthetic branch and table-address calibration via genuine Lackey events.
-- Pinned libsecp256k1 public-API adapter differential campaign (negative for arithmetic bugs under public API policy).
-- Bounded dynamic-trace campaigns on libsecp256k1 adapter (no class-correlated insn-sequence divergence observed on tested corpus).
+- Portable readiness scripts: `bootstrap.sh`, `check_prerequisites.sh`, `verify.sh`, focused runners
+- JSON schemas: `finding-v1`, `experiment-v1`, `trace-v1` with `scripts/validate_schemas.py`
+- Dockerfiles for clean-environment and Valgrind-extended verification
+- Documentation suite under `docs/`
+- CI: locked tests, target build smoke, differential/minimizer smoke, schema + shell syntax, compiler matrix
+- Manual/scheduled `extended-trace.yml` and tag `release.yml`
+- Dependabot for Cargo and GitHub Actions
+- Upstream mutation-lab evidence for `schnorrsig_sign_custom` (verified test-coverage gap)
+- Published readiness and upstream study summaries
 
-### Explicit non-claims
+### Changed
 
-- No upstream production vulnerability reported.
-- Dynamic trace equality is not a universal constant-time proof.
-- Callback-based counters (legacy `trace` crate) are secondary calibration only.
+- `.gitignore` excludes generated raw logs, binaries, Valgrind builds, and upstream checkouts
+- Untracked historical verification raw logs that embedded machine-local absolute paths
+- README rewritten for independent reproduction
+- Coverage matrix upgraded after mutation lab
+
+### Verified
+
+- `TABLE_ADDRESS_DETECTION_VERIFIED` (synthetic Lackey static load / cache-line divergence with equal insn sets)
+- `./scripts/verify.sh` full gate suite on Linux host
+- Draft upstream test PR for `sign_custom` ctime coverage
+
+## [0.1.0] — 2026-07-17
+
+### Added
+
+- BigUint reference model and structured corpus
+- Correct / corrupted / leaky C harnesses + minimizer
+- Valgrind Lackey dynamic tracing with region markers
+- Synthetic calibration of branch and table-address detection
+- Pinned libsecp256k1 baseline (no production vulnerability found)

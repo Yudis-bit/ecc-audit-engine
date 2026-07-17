@@ -25,6 +25,16 @@ exploitable details before coordinated disclosure.
 
 ## Explicit baseline result
 
-**No vulnerability in upstream libsecp256k1 was found by the published baseline
-experiments.** Synthetic corrupted and leaky targets exist only to calibrate
-detectors.
+**No vulnerability in upstream libsecp256k1 has been confirmed by the published
+experiments.** Synthetic corrupted and leaky targets are calibration fixtures
+used to validate the engine.
+
+A negative bounded trace result is not a universal proof of constant-time
+behavior.
+
+## Private disclosure path
+
+If unmodified upstream demonstrates a credible secret-dependent branch or
+memory-address behavior with practical impact: stop public disclosure, preserve
+raw evidence privately, and follow upstream `SECURITY.md`. Do not open a public
+issue or PR that exposes an exploitable flaw.

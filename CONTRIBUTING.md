@@ -17,12 +17,14 @@
 ## Development
 
 ```bash
+./scripts/bootstrap.sh
+./scripts/verify.sh
+# or incrementally:
 cargo fmt --all --check
 cargo clippy --workspace --all-targets --all-features -- -D warnings
-cargo test --workspace --all-features -- --nocapture
+cargo test --workspace --all-features --locked -- --nocapture
+./scripts/build_targets.sh
 ```
-
-Build C harnesses with `./scripts/build_targets.sh` after installing a C compiler.
 
 Dynamic tracing requires Valgrind Lackey (see `third_party/README.md`).
 
@@ -31,3 +33,4 @@ Dynamic tracing requires Valgrind Lackey (see `third_party/README.md`).
 - Keep commits atomic and buildable.
 - Update `CHANGELOG.md` for user-visible changes.
 - Prefer small, reviewable diffs.
+- Do not open upstream libsecp256k1 PRs without a verified test-coverage gap (see `docs/upstream-research.md`).

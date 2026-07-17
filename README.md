@@ -1,133 +1,164 @@
 # ecc-audit-engine
 
-Standalone **defensive** research engine for secp256k1:
+Reproducible **secp256k1** correctness, differential-testing, failure-minimization, and dynamic-trace **research** engine.
 
-- mathematical reference model (BigUint)
-- differential testing against local C targets
-- input minimization
-- Valgrind Lackey **dynamic** instruction / memory tracing (non-callback)
+[![CI](https://github.com/Yudis-bit/ecc-audit-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/Yudis-bit/ecc-audit-engine/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/Yudis-bit/ecc-audit-engine)](https://github.com/Yudis-bit/ecc-audit-engine/releases)
 
-**No vulnerability in upstream libsecp256k1 was found by the published baseline experiments.**
+## What this is
 
-The synthetic corrupted and leaky targets exist only to calibrate and validate the detection engine.
+- BigUint reference mathematics for secp256k1 laboratory oracles
+- Deterministic structured corpus generation
+- Differential testing against local C ABI targets
+- Failure minimization and reproducer replay
+- Valgrind Lackey dynamic instruction / memory-address tracing
+- Synthetic calibration fixtures (branch, table-address, control)
+- Bounded public-API baseline against pinned upstream libsecp256k1
+
+## What this is not
+
+- Not a wallet, exchange, or production crypto library
+- Not a private-key cracker, “Bitcoin breaker”, or exploit engine
+- Not a universal proof of constant-time behavior
+- Not authorization to test third-party systems
 
 ## Authorized scope
 
 - Synthetic private keys only
 - Locally compiled binaries and authorized laboratory targets only
-- No live wallets, exchanges, nodes, hardware wallets owned by others, or production services
+- No live wallets, exchanges, nodes, browser extensions, hardware wallets, or production services
 
-## Architecture
+## Required language
 
-| Component | Role |
-|-----------|------|
-| `crates/model` | Auditable field/group math (primary oracle) |
-| `crates/corpus` | Deterministic structured cases |
-| `crates/runner` | FFI loader for C ABI targets |
-| `crates/differential` | Target vs model comparison |
-| `crates/minimizer` | Delta-debug failing inputs |
-| `crates/dyntrace` | Valgrind Lackey parse / normalize / compare |
-| `crates/trace` | Optional callback calibration (secondary) |
-| `crates/timing` | Wall-clock / RDTSC harness (noisy; not CT proof) |
-| `harnesses/` | correct / corrupted / leaky / libsecp adapter / trace driver |
-| `scripts/` | Build and experiment helpers |
+No vulnerability in upstream libsecp256k1 has been confirmed by the
+published experiments.
 
-## What has been verified (v0.1.0)
+Synthetic corrupted and leaky targets are calibration fixtures used
+to validate the engine.
 
-| Capability | Status |
-|------------|--------|
-| Reference model + known vectors | Pass |
-| Corpus seed 1337 (148 cases) | Stable hash |
-| Correct mini-C target differential | 0 unexpected failures |
-| Corrupted fixtures + isolation map | Detected as planted |
-| Minimizer replay | Pass |
-| Lackey dynamic branch calibration | Detected planted branch |
-| Lackey dynamic table-address calibration | Detected load-set difference |
-| Constant-time control fixture | No false class correlation |
-| libsecp256k1 public-API differential | Policy-consistent; no arithmetic bug claimed |
-| libsecp256k1 dynamic-trace (bounded) | No class-correlated insn-seq divergence on tested corpus |
+A negative bounded trace result is not a universal proof of
+constant-time behavior.
 
-**Pinned upstream commit tested historically:**  
-`11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53` (bitcoin-core/secp256k1)
-
-Bounded dynamic-trace language:
-
-> No reproducible input-class-correlated instruction-sequence divergence was observed for the tested adapter build, backend, operation, and sample corpus.
-
-This is **not** a proof that libsecp256k1 is constant-time on all platforms.
-
-Do **not** describe callback counters as binary taint analysis.
-
-## Prerequisites
-
-- Rust (see `rust-toolchain.toml`)
-- GCC/`cc`
-- Linux x86_64 recommended
-- Optional: Valgrind 3.22+ for dynamic tracing (build under `third_party/` — see `third_party/README.md`)
-
-## Bootstrap
+## Quick start (fresh machine)
 
 ```bash
+git clone https://github.com/Yudis-bit/ecc-audit-engine.git
+cd ecc-audit-engine
 ./scripts/bootstrap.sh
-# or:
-cargo build --workspace
-./scripts/build_targets.sh
+./scripts/verify.sh
 ```
 
-## Tests
+`verify.sh` checks prerequisites, builds, lints, tests, runs differential and minimizer gates, synthetic dynamic-trace calibration (when Valgrind is available), pinned libsecp baseline, schema validation, and writes a compact report under `reports/readiness-run/`.
+
+## Fast test suite
 
 ```bash
 cargo fmt --all --check
 cargo clippy --workspace --all-targets --all-features -- -D warnings
-cargo test --workspace --all-features -- --nocapture
+cargo test --workspace --all-features --locked -- --nocapture
+./scripts/build_targets.sh
+./scripts/run_differential.sh
+./scripts/run_minimizer_replay.sh
 ```
 
-## Differential experiments
-
-```bash
-cargo run -p cli -- model self-test
-cargo run -p cli -- corpus generate --seed 1337 --output fixtures/corpus-v1.json
-cargo run -p cli -- differential \
-  --target targets/correct-target.so \
-  --corpus fixtures/corpus-v1.json
-cargo run -p cli -- differential \
-  --target targets/corrupted-target.so \
-  --corpus fixtures/corpus-v1.json \
-  --minimize
-```
-
-## Dynamic trace (Valgrind Lackey)
+## Extended trace suite (optional Valgrind)
 
 ```bash
 export PATH="$PWD/third_party/valgrind/bin:$PATH"   # if using project-local Valgrind
-cargo run -p cli -- trace-backend verify
-
-# minimal calibration targets (fast; markers + planted gadgets only)
-./targets/ecc-trace-driver targets/calib-branch.so <64-hex-sk> case_id
-# full campaigns: see experiments/dynamic-trace/ and scripts/run_dynamic_trace.sh
+./scripts/run_trace_calibration.sh
+# full campaigns: scripts/run_dynamic_trace.sh
 ```
 
-Table-address detection requires Lackey `--trace-mem=yes` and comparison of **effective load addresses / cache lines**, not instruction-sequence equality alone.
+Manual CI workflow: `.github/workflows/extended-trace.yml`
 
-## Report structure
+## Dependencies
 
-- `reports/published/` — compact public research summaries
-- `reports/verification-run/` — independent prototype verification
-- `reports/dynamic-trace/` — backend metadata and bounded campaign summaries  
-  (large `raw/` traces are gitignored)
+| Dependency | Required? |
+|------------|-----------|
+| Rust (see `rust-toolchain.toml`) | yes |
+| GCC/`cc`, git, python3 | yes |
+| Valgrind 3.22+ | optional (dynamic trace) |
+| CMake / Autotools | optional (official upstream builds) |
+| Clang | optional (compiler matrix) |
+| Docker | optional (clean environment) |
 
-## Known limitations
+See [docs/dependencies.md](docs/dependencies.md).
 
-- Mini-C field arithmetic is a lab fixture, not production crypto.
-- In-process dylib loading (limited crash isolation).
-- Timing harness is host-noise limited; large \|t\| alone is not key recovery.
-- Dynamic taint / full ISA semantics not complete.
-- CI does not run multi-hour Valgrind campaigns by default.
+## What was verified (prototype / readiness)
+
+| Capability | Status |
+|------------|--------|
+| Reference model + known vectors | Verified by tests |
+| Corpus seed 1337 deterministic | Gate in `verify.sh` |
+| Correct mini-C differential | Expect zero unexpected mismatches |
+| Corrupted fixtures + minimizer replay | Expect mapped defects + MIN reproducers |
+| Lackey branch calibration | Synthetic detection |
+| Lackey table-address calibration | Synthetic static load / cache-line divergence |
+| Constant-time control fixture | Must stay clean |
+| Pinned libsecp256k1 public-API baseline | Policy-consistent; no arithmetic bug claimed |
+
+**Pinned upstream commit (historical v0.1.0 / reproducibility):**  
+`11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53` (bitcoin-core/secp256k1)
+
+## Synthetic vs unmodified upstream
+
+| Result class | Meaning |
+|--------------|---------|
+| Synthetic calibration | Intentionally leaky fixtures validate detectors |
+| Controlled corrupted fixtures | Planted arithmetic defects validate differential + minimizer |
+| Unmodified upstream baseline | Bounded adapter experiments only |
+| Negative bounded trace | No class-correlated divergence **on the tested corpus/build** |
+
+## Upstream commit tested
+
+See `targets-src/SECP256K1_PIN.txt` and [docs/upstream-research.md](docs/upstream-research.md).
+
+## Reports
+
+- `reports/published/` — compact public summaries
+- `reports/readiness-run/` — verification outputs (raw/generated gitignored)
+- `reports/dynamic-trace/` — backend metadata and calibration summaries
+- Schemas: `schemas/*-v1.schema.json`
+
+## Add a target
+
+1. Implement the ABI in `crates/target-api/include/ecc_target.h`
+2. Add sources under `harnesses/`
+3. Extend `scripts/build_targets.sh`
+4. Add corpus cases / experiments as needed
+5. Run `./scripts/verify.sh`
+
+## Reproduce one finding
+
+```bash
+cargo run -p cli -- differential \
+  --target targets/corrupted-target.so \
+  --corpus fixtures/corpus-v1.json \
+  --case <case_id> \
+  --minimize \
+  --output reports/latest
+```
+
+For dynamic-trace campaigns, see `experiments/dynamic-trace/` and `scripts/run_trace_calibration.sh`.
+
+## Real security findings
+
+See [SECURITY.md](SECURITY.md) and [docs/threat-model.md](docs/threat-model.md).
+Do not publish exploitable detail for unmodified upstream without coordinated disclosure.
+
+## Documentation
+
+- [Architecture](docs/architecture.md)
+- [Threat model](docs/threat-model.md)
+- [Experiment methodology](docs/experiment-methodology.md)
+- [Report schema](docs/report-schema.md)
+- [Reproducibility](docs/reproducibility.md)
+- [Upstream research](docs/upstream-research.md)
+- [Limitations](docs/limitations.md)
+- [Dependencies](docs/dependencies.md)
+- [Release process](docs/release-process.md)
 
 ## License
 
-MIT — see `LICENSE`.
-
-## Security
-
-See `SECURITY.md`.
+MIT — see [LICENSE](LICENSE).
