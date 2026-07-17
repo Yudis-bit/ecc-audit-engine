@@ -1,0 +1,26 @@
+{
+  "schema_version": "experiment-v1",
+  "kind": "upstream-contribution-validation",
+  "operation": "secp256k1_schnorrsig_sign_custom",
+  "upstream_commit_base": "11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53",
+  "patch_files": ["src/ctime_tests.c"],
+  "diff_insertions": 11,
+  "diff_deletions": 0,
+  "proof": {
+    "clean_old_test": "pass",
+    "mutA_old_test": "miss",
+    "mutB_old_test": "miss",
+    "clean_new_test_runs": 2,
+    "clean_new_test": "pass",
+    "mutA_new_test": "detect",
+    "mutB_new_test": "detect",
+    "control_new_test": "pass"
+  },
+  "result": "validated",
+  "production_code_modified": false,
+  "limitations": [
+    "Custom nonce callback path not covered by minimal patch",
+    "Not a production vulnerability claim"
+  ],
+  "reproduction_command": "valgrind --error-exitcode=42 ./build/bin/ctime_tests"
+}

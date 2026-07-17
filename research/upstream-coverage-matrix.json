@@ -1,93 +1,34 @@
-[
-  {
-    "operation": "secp256k1_ec_pubkey_create",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests run_tests"
-  },
-  {
-    "operation": "secp256k1_ecdsa_sign",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_ec_seckey_tweak_add",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_ec_seckey_tweak_mul",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_keypair_create",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests + extrakeys"
-  },
-  {
-    "operation": "secp256k1_keypair_xonly_tweak_add",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_schnorrsig_sign32",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_schnorrsig_sign_custom",
-    "implemented": true,
-    "ctime_tests": false,
-    "classification": "POSSIBLE_GAP",
-    "note": "not called in ctime_tests.c"
-  },
-  {
-    "operation": "secp256k1_ecdh",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_ecdsa_sign_recoverable",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests + recovery"
-  },
-  {
-    "operation": "secp256k1_ellswift_create",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_ellswift_xdh",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests"
-  },
-  {
-    "operation": "secp256k1_musig_partial_sign",
-    "implemented": true,
-    "ctime_tests": true,
-    "classification": "NO_GAP",
-    "note": "ctime_tests + musig"
-  }
-]
+{
+  "schema_version": "upstream-coverage-matrix-v2",
+  "upstream_commit": "11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53",
+  "source_file": "src/ctime_tests.c",
+  "entries": [
+    {"api": "secp256k1_ec_pubkey_create", "module": "core", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_ecdsa_sign", "module": "core", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_ecdsa_sign_recoverable", "module": "recovery", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_ec_seckey_tweak_add", "module": "core", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_ec_seckey_tweak_mul", "module": "core", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_ecdh", "module": "ecdh", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_keypair_create", "module": "extrakeys", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_keypair_xonly_tweak_add", "module": "extrakeys", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_schnorrsig_sign32", "module": "schnorrsig", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {
+      "api": "secp256k1_schnorrsig_sign_custom",
+      "module": "schnorrsig",
+      "processes_secret": true,
+      "ctime_direct": false,
+      "ctime_indirect": "shares sign_internal with sign32 but unique entry/extraparams path untested under CHECKMEM",
+      "mutation_lab_completed": true,
+      "verdict": "VERIFIED_TEST_COVERAGE_GAP",
+      "evidence": "reports/upstream-readiness/schnorrsig-sign-custom-mutation.md"
+    },
+    {"api": "secp256k1_ellswift_create", "module": "ellswift", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_ellswift_xdh", "module": "ellswift", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"},
+    {"api": "secp256k1_musig_partial_sign", "module": "musig", "processes_secret": true, "ctime_direct": true, "verdict": "NO_GAP"}
+  ],
+  "overall_upstream_status": "UPSTREAM_PATCH_DRAFT_PR_CREATED",
+  "notes": [
+    "No production vulnerability claimed.",
+    "Custom nonce callback path for sign_custom remains future work."
+  ]
+}

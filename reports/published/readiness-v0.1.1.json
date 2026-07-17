@@ -1,0 +1,61 @@
+{
+  "schema_version": "experiment-v1",
+  "kind": "readiness-verification",
+  "generated_at_utc": "2026-07-17T17:06:50Z",
+  "engine_commit": "69a0695c033e27e71e1bd5a115778188bb980d89",
+  "corpus_hash": "4af661f6597633433abfa26ca7df3add0c847eecebc85ddac7fd72ea8251bbee",
+  "experiment_seed": 1337,
+  "operation": "readiness_suite",
+  "result": "verify_passed",
+  "table_address_status": "TABLE_ADDRESS_DETECTION_VERIFIED",
+  "gates": [
+    "utc=2026-07-17T17:06:22Z",
+    "commit=69a0695c033e27e71e1bd5a115778188bb980d89",
+    "cargo_fmt=PASS",
+    "cargo_clippy=PASS",
+    "cargo_test_locked=PASS",
+    "model_self_test=PASS",
+    "build_targets=PASS",
+    "corpus_deterministic=PASS",
+    "differential_correct=PASS",
+    "differential_corrupted_and_minimizer=PASS",
+    "trace_calibration=PASS",
+    "libsecp_baseline=PASS",
+    "schema_validation=PASS",
+    "no_personal_paths=PASS",
+    "failed=0"
+  ],
+  "trace_calibration": {
+    "branch_detected": true,
+    "table_detected": true,
+    "control_clean": true,
+    "table_summary": {
+      "aggregate_insn_set_jaccard": 1.0,
+      "aggregate_static_mem_jaccard": 0.9444444444444444,
+      "aggregate_static_cache_jaccard": 0.9,
+      "insn_sequences_equal_enough": true,
+      "static_mem_diverges": true,
+      "static_cache_diverges": true,
+      "target_sha256": "20dfa0c6d1cbd6d15575754a1182a3acaa310f661ee0d7123829f930c2b506d3"
+    },
+    "branch_target_sha256": "b8b5122148271f96ca69adea2f6e8d09462342811d99af1bbf04034224307a63",
+    "control_target_sha256": "c429c0fd41986b90fe5b668eefb7e61cbe448813411399919900b65125672ebd"
+  },
+  "libsecp_baseline": {
+    "schema_version": "libsecp-baseline-v1",
+    "total": 148,
+    "mismatch_count": 41,
+    "policy_or_boundary": 41,
+    "arithmetic_suspect": 0,
+    "notes": [
+      "API rejection-policy differences are not classified as arithmetic vulnerabilities.",
+      "No vulnerability in upstream libsecp256k1 has been confirmed by the published experiments."
+    ]
+  },
+  "limitations": [
+    "No vulnerability in upstream libsecp256k1 has been confirmed by the published experiments.",
+    "Synthetic corrupted and leaky targets are calibration fixtures used to validate the engine.",
+    "A negative bounded trace result is not a universal proof of constant-time behavior."
+  ],
+  "reproduction_command": "./scripts/verify.sh"
+}

@@ -1,9 +1,9 @@
 # Upstream constant-time coverage matrix
 
-Source: `src/ctime_tests.c` at pin `11dad6d0` (also matches current origin/master tip at fetch time).
+Source: `src/ctime_tests.c` at pin `11dad6d0` (matches upstream/master HEAD at study time).
 
-| Operation | In ctime_tests | Classification | Note |
-|----------|----------------|----------------|------|
+| Operation | In ctime_tests (direct) | Classification | Note |
+|----------|-------------------------|----------------|------|
 | `secp256k1_ec_pubkey_create` | True | NO_GAP | ctime_tests run_tests |
 | `secp256k1_ecdsa_sign` | True | NO_GAP | ctime_tests |
 | `secp256k1_ec_seckey_tweak_add` | True | NO_GAP | ctime_tests |
@@ -11,7 +11,7 @@ Source: `src/ctime_tests.c` at pin `11dad6d0` (also matches current origin/maste
 | `secp256k1_keypair_create` | True | NO_GAP | ctime_tests + extrakeys |
 | `secp256k1_keypair_xonly_tweak_add` | True | NO_GAP | ctime_tests |
 | `secp256k1_schnorrsig_sign32` | True | NO_GAP | ctime_tests |
-| `secp256k1_schnorrsig_sign_custom` | False | POSSIBLE_GAP | not called in ctime_tests.c |
+| `secp256k1_schnorrsig_sign_custom` | False (pre-patch) | **VERIFIED_TEST_COVERAGE_GAP** | Mutation lab: planted branch/table in unique path survived old ctime; detected by minimal new call |
 | `secp256k1_ecdh` | True | NO_GAP | ctime_tests |
 | `secp256k1_ecdsa_sign_recoverable` | True | NO_GAP | ctime_tests + recovery |
 | `secp256k1_ellswift_create` | True | NO_GAP | ctime_tests |
@@ -20,16 +20,10 @@ Source: `src/ctime_tests.c` at pin `11dad6d0` (also matches current origin/maste
 
 ## Decision
 
-Core secret-bearing public APIs used in production (pubkey_create, ECDSA sign, ECDH, seckey tweaks,
-keypair, schnorrsig_sign32, musig partial_sign, ellswift) are already exercised under Valgrind memcheck
-uninitialized-secret instrumentation in upstream `ctime_tests`.
+Core secret-bearing APIs exercised by current `ctime_tests` remain **NO_GAP** for the CHECKMEM properties those tests target.
 
-`schnorrsig_sign_custom` is not explicitly called; however it is a thin customization path over the same
-signing core already covered by `schnorrsig_sign32`. Without a demonstrated planted-regression miss that
-survives existing tests while being caught only by a new test, this is **POSSIBLE_GAP** at most — not
-**VERIFIED_TEST_COVERAGE_GAP**.
+`schnorrsig_sign_custom` is **not** merely an unused alias: it is a public entry with extraparams/custom nonce wiring. Direct CHECKMEM coverage was missing; synthetic mutations unique to that entry survived existing ctime tests and were caught by a one-call test addition.
 
-**UPSTREAM_PATCH_NOT_JUSTIFIED** for a public PR at this time.
+Status for contribution: draft PR justified (test-only).
 
-Standalone engine remains valuable for: effective-address/table-class comparison, differential arithmetic,
-and multi-build public-API oracles — complementary, not a replacement for upstream ctime_tests.
+Custom nonce-callback coverage remains incomplete after the minimal patch (future POSSIBLE_GAP).

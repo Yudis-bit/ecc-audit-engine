@@ -1,0 +1,32 @@
+{
+  "schema_version": "pre-readiness-manifest-v1",
+  "utc_timestamp": "2026-07-17T16:58:45Z",
+  "git_commit": "69a0695c033e27e71e1bd5a115778188bb980d89",
+  "git_branch": "master",
+  "git_tag_v0_1_0": "9fecf60132fdd1e75337b98af98cafd3e3ccc7b9",
+  "repository_url": "https://github.com/Yudis-bit/ecc-audit-engine",
+  "release_url": "https://github.com/Yudis-bit/ecc-audit-engine/releases/tag/v0.1.0",
+  "upstream_fork_url": "https://github.com/Yudis-bit/secp256k1",
+  "upstream_commit_pinned": "11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53",
+  "corpus_hash": "4af661f6597633433abfa26ca7df3add0c847eecebc85ddac7fd72ea8251bbee",
+  "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+  "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+  "backend_valgrind_local": "valgrind-3.22.0",
+  "report_hashes": {
+    "reports/published/libsecp256k1-baseline.md": "b93f88f498d22f202c6f600f110c12f7888fcdd95e1dc52ede5860beb0ece4ed",
+    "reports/published/release-notes-v0.1.0.md": "f3342c50414e5fc2f739ad0a2fb0f8cfc3ef4c01ff03565d95f541708116d31f",
+    "reports/published/prototype-verification.md": "e18e157e306edfc5b98bd07e4995f9f92fed0d5e21c9bf9aaa7184412846d8b9",
+    "reports/published/methodology-limitations.md": "95d48f5066e1dbbf6630a0c579638b9bbe156a90794bf4f4bf1582c63d221bcb",
+    "reports/published/dynamic-trace-summary.md": "5bded5d68b06cfe32e1a827cb4b8b928089527405f0d1dfdf9ad41e6a84f92a2",
+    "reports/dynamic-trace/calibration-report.json": "343634f389cda03c66e86a443ef5aa6112f12535603220ed0ba539d01bb76058",
+    "reports/verification-run/verification.json": "2b143fe9ba9a0343bbb9110a00c84ab24f8fce0b97a938de51e1f75f78f22d1f",
+    "research/upstream-coverage-matrix.json": "cbf72b423d3ca3cd5fdcd2aed32599d811396073ede905bb6dc417ec54b53333"
+  },
+  "target_hashes_if_present": {
+    "targets/calib-branch.so": "b8b5122148271f96ca69adea2f6e8d09462342811d99af1bbf04034224307a63",
+    "targets/calib-table.so": "20dfa0c6d1cbd6d15575754a1182a3acaa310f661ee0d7123829f930c2b506d3",
+    "targets/calib-control.so": "c429c0fd41986b90fe5b668eefb7e61cbe448813411399919900b65125672ebd",
+    "targets/correct-target.so": "7a570315d82189e28c691bb893b0c6fc5302a458dc8ced942954e8cd2376c2ab",
+    "targets/corrupted-target.so": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29"
+  }
+}

@@ -1,0 +1,6 @@
+upstream_commit=11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53
+compiler=cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+cmake=cmake version 3.28.3
+valgrind=valgrind-3.22.0
+ctime_bin_sha256=8932034fce3120f7729fd1a60ed6d6d2402d66d4b46fc1a90a5b22153cc65860
+lib_sha256=80f2348467aec6707c8191abbab682b86191b865c2dc9b4a067c818068e7a70a

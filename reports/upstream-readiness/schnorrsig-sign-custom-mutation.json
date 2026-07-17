@@ -1,0 +1,47 @@
+{
+  "schema_version": "experiment-v1",
+  "kind": "upstream-mutation-lab",
+  "operation": "secp256k1_schnorrsig_sign_custom",
+  "upstream_commit": "11dad6d06c0ea8fd6d9d423d32bddd18b70b8b53",
+  "compiler": "gcc 13.3.0",
+  "build_system": "cmake",
+  "valgrind": "3.22.0",
+  "classification": "VERIFIED_TEST_COVERAGE_GAP",
+  "not_a_production_vulnerability_claim": true,
+  "existing_ctime_calls_sign_custom": false,
+  "existing_ctime_calls_sign32": true,
+  "matrix": [
+    {
+      "mutation": "A_secret_branch",
+      "old_ctime_detects": false,
+      "new_ctime_detects": true,
+      "control_clean": null
+    },
+    {
+      "mutation": "B_secret_table_address",
+      "old_ctime_detects": false,
+      "new_ctime_detects": true,
+      "control_clean": null
+    },
+    {
+      "mutation": "C_constant_control",
+      "old_ctime_detects": false,
+      "new_ctime_detects": false,
+      "control_clean": true
+    },
+    {
+      "mutation": "clean_upstream_plus_new_test",
+      "old_ctime_detects": null,
+      "new_ctime_detects": false,
+      "runs": 2,
+      "pass": true
+    }
+  ],
+  "proposed_patch_files": ["src/ctime_tests.c"],
+  "limitations": [
+    "Default nonce path covered; custom nonce callback path not fully exercised by the minimal patch.",
+    "Synthetic mutations are not real upstream vulnerabilities.",
+    "A negative result on other APIs is not a universal constant-time proof."
+  ],
+  "reproduction_command": "cmake -B build -DSECP256K1_VALGRIND=ON -DSECP256K1_BUILD_CTIME_TESTS=ON ... && valgrind --error-exitcode=42 ./build/bin/ctime_tests"
+}
