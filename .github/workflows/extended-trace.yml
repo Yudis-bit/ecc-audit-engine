@@ -51,7 +51,7 @@ jobs:
         run: ./scripts/generate_report.sh
 
       - name: upload compact artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: extended-trace-reports
           path: |
