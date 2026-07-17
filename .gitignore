@@ -15,3 +15,4 @@ reports/latest/report.md
 reports/latest/environment.json
 reports/latest/environment.txt
 reports/latest/build-matrix*
+targets-src/secp256k1/

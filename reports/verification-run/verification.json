@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "subject_commit": "a82e8a406673974c166df2a9d50b552b0fbd243c",
+  "verdicts": [
+    {"claim": "commit_a82e8a4_exists", "verdict": "CONFIRMED"},
+    {"claim": "fmt_clippy_tests_pass_clean_rebuild", "verdict": "CONFIRMED"},
+    {"claim": "known_vectors_match_independent_python", "verdict": "CONFIRMED"},
+    {"claim": "corpus_seed_1337_hash_stable", "verdict": "CONFIRMED", "sha256": "4af661f6597633433abfa26ca7df3add0c847eecebc85ddac7fd72ea8251bbee", "cases": 148},
+    {"claim": "correct_target_0_of_148_failures", "verdict": "CONFIRMED", "binary_sha256": "7a570315d82189e28c691bb893b0c6fc5302a458dc8ced942954e8cd2376c2ab"},
+    {"claim": "corrupted_target_14_failures", "verdict": "CONFIRMED", "binary_sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29"},
+    {"claim": "failures_map_to_planted_flags", "verdict": "CONFIRMED", "map": {"CORRUPT_FE_MUL": 11, "CORRUPT_INFINITY_ADD": 1, "CORRUPT_SCALAR_BOUNDARY": 2}},
+    {"claim": "minimizer_replay_14_of_14", "verdict": "CONFIRMED"},
+    {"claim": "synthetic_branch_callback", "verdict": "CONFIRMED_WITH_LIMITATIONS", "classification": "INSTRUMENTED_SYNTHETIC_CALIBRATION"},
+    {"claim": "synthetic_table_callback", "verdict": "CONFIRMED_WITH_LIMITATIONS", "classification": "INSTRUMENTED_SYNTHETIC_CALIBRATION"},
+    {"claim": "control_clean_callbacks", "verdict": "CONFIRMED"},
+    {"claim": "secret_branch_in_disassembly_O0_O2_O3", "verdict": "CONFIRMED"},
+    {"claim": "binary_taint_engine", "verdict": "FALSE"},
+    {"claim": "stable_timing_leakage_lsb_branch", "verdict": "MISLEADING"},
+    {"claim": "ms_latency_is_fake_delay", "verdict": "FALSE"},
+    {"claim": "no_real_world_vuln_claimed", "verdict": "CONFIRMED"}
+  ],
+  "timing_multiseed_summary": {
+    "samples_per_class": 500,
+    "seeds": 5,
+    "leaky_branch_t": [-0.405, -1.130, 2.117, 0.412, -0.843],
+    "leaky_branch_direction_stable": false,
+    "control_direction_stable": false,
+    "reject_path_mean_ns": 2200,
+    "pubkey_mean_ms_approx": "6-12"
+  },
+  "evidence_dir": "reports/verification-run/raw"
+}

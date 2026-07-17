@@ -1,0 +1,80 @@
+0000000000021aa0 <secp256k1_ec_pubkey_create>:
+   21aa0:	f3 0f 1e fa          	endbr64
+   21aa4:	41 57                	push   r15
+   21aa6:	41 56                	push   r14
+   21aa8:	49 89 fe             	mov    r14,rdi
+   21aab:	41 55                	push   r13
+   21aad:	41 54                	push   r12
+   21aaf:	55                   	push   rbp
+   21ab0:	53                   	push   rbx
+   21ab1:	48 89 f3             	mov    rbx,rsi
+   21ab4:	48 81 ec 28 01 00 00 	sub    rsp,0x128
+   21abb:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+   21ac2:	00 00 
+   21ac4:	48 89 84 24 18 01 00 	mov    QWORD PTR [rsp+0x118],rax
+   21acb:	00 
+   21acc:	31 c0                	xor    eax,eax
+   21ace:	48 85 f6             	test   rsi,rsi
+   21ad1:	0f 84 59 01 00 00    	je     21c30 <secp256k1_ec_pubkey_create+0x190>
+   21ad7:	66 0f ef c0          	pxor   xmm0,xmm0
+   21adb:	0f 11 06             	movups XMMWORD PTR [rsi],xmm0
+   21ade:	0f 11 46 10          	movups XMMWORD PTR [rsi+0x10],xmm0
+   21ae2:	0f 11 46 20          	movups XMMWORD PTR [rsi+0x20],xmm0
+   21ae6:	0f 11 46 30          	movups XMMWORD PTR [rsi+0x30],xmm0
+   21aea:	8b 0f                	mov    ecx,DWORD PTR [rdi]
+   21aec:	85 c9                	test   ecx,ecx
+   21aee:	0f 84 5c 01 00 00    	je     21c50 <secp256k1_ec_pubkey_create+0x1b0>
+   21af4:	48 89 d6             	mov    rsi,rdx
+   21af7:	48 85 d2             	test   rdx,rdx
+   21afa:	0f 84 70 01 00 00    	je     21c70 <secp256k1_ec_pubkey_create+0x1d0>
+   21b00:	4c 8d 64 24 10       	lea    r12,[rsp+0x10]
+   21b05:	48 8d 54 24 0c       	lea    rdx,[rsp+0xc]
+   21b0a:	4c 89 e7             	mov    rdi,r12
+   21b0d:	4c 8d bc 24 90 00 00 	lea    r15,[rsp+0x90]
+   21b14:	00 
+   21b15:	e8 46 70 fe ff       	call   8b60 <secp256k1_scalar_set_b32>
+   21b1a:	48 8b 54 24 10       	mov    rdx,QWORD PTR [rsp+0x10]
+   21b1f:	48 8b 7c 24 18       	mov    rdi,QWORD PTR [rsp+0x18]
+   21b24:	48 8b 4c 24 20       	mov    rcx,QWORD PTR [rsp+0x20]
+   21b29:	48 8b 74 24 28       	mov    rsi,QWORD PTR [rsp+0x28]
+   21b2e:	48 89 d0             	mov    rax,rdx
+   21b31:	48 09 f8             	or     rax,rdi
+   21b34:	48 09 c8             	or     rax,rcx
+   21b37:	48 09 f0             	or     rax,rsi
+   21b3a:	8b 44 24 0c          	mov    eax,DWORD PTR [rsp+0xc]
+   21b3e:	40 0f 95 c5          	setne  bpl
+   21b42:	85 c0                	test   eax,eax
+   21b44:	0f 94 c0             	sete   al
+   21b47:	21 c5                	and    ebp,eax
+   21b49:	44 0f b6 ed          	movzx  r13d,bpl
+   21b4d:	83 f5 01             	xor    ebp,0x1
+   21b50:	40 0f b6 ed          	movzx  ebp,bpl
+   21b54:	89 6c 24 0c          	mov    DWORD PTR [rsp+0xc],ebp
+   21b58:	48 63 44 24 0c       	movsxd rax,DWORD PTR [rsp+0xc]
+   21b5d:	49 89 c0             	mov    r8,rax
+   21b60:	48 83 e8 01          	sub    rax,0x1
+   21b64:	41 83 e0 01          	and    r8d,0x1
+   21b68:	48 21 c2             	and    rdx,rax
+   21b6b:	48 21 c7             	and    rdi,rax
+   21b6e:	48 21 c1             	and    rcx,rax
+   21b71:	4c 09 c2             	or     rdx,r8
+   21b74:	48 21 f0             	and    rax,rsi
+   21b77:	48 89 7c 24 18       	mov    QWORD PTR [rsp+0x18],rdi
+   21b7c:	4c 89 fe             	mov    rsi,r15
+   21b7f:	48 89 54 24 10       	mov    QWORD PTR [rsp+0x10],rdx
+   21b84:	4c 89 f7             	mov    rdi,r14
+   21b87:	4c 89 e2             	mov    rdx,r12
+   21b8a:	4c 8d 74 24 30       	lea    r14,[rsp+0x30]
+   21b8f:	48 89 4c 24 20       	mov    QWORD PTR [rsp+0x20],rcx
+   21b94:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+   21b99:	e8 72 19 ff ff       	call   13510 <secp256k1_ecmult_gen_gej>
+   21b9e:	4c 89 f7             	mov    rdi,r14
+   21ba1:	4c 89 fe             	mov    rsi,r15
+   21ba4:	e8 f7 4d fe ff       	call   69a0 <secp256k1_ge_set_gej>
+   21ba9:	31 c0                	xor    eax,eax
+   21bab:	4c 89 ff             	mov    rdi,r15
+   21bae:	b9 10 00 00 00       	mov    ecx,0x10
+   21bb3:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+   21bb6:	4c 89 f6             	mov    rsi,r14
+   21bb9:	48 89 df             	mov    rdi,rbx
+   21bbc:	e8 9f 6c fe ff       	call   8860 <secp256k1_ge_to_bytes>

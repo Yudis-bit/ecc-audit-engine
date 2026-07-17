@@ -1,0 +1,68 @@
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.46
+   Compiling unicode-ident v1.0.24
+   Compiling serde_core v1.0.228
+   Compiling serde v1.0.228
+    Checking cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling thiserror v1.0.69
+    Checking typenum v1.20.1
+    Checking hex v0.4.3
+   Compiling libc v0.2.186
+   Compiling autocfg v1.5.1
+   Compiling zmij v1.0.23
+   Compiling zerocopy v0.8.54
+   Compiling generic-array v0.14.7
+    Checking cpufeatures v0.2.17
+   Compiling serde_json v1.0.150
+    Checking memchr v2.8.3
+   Compiling num-traits v0.2.19
+    Checking itoa v1.0.18
+   Compiling syn v2.0.119
+    Checking libloading v0.8.9
+    Checking utf8parse v0.2.2
+    Checking anstyle-parse v1.0.0
+    Checking is_terminal_polyfill v1.70.2
+    Checking anstyle-query v1.1.5
+    Checking anstyle v1.0.14
+    Checking equivalent v1.0.2
+    Checking hashbrown v0.17.1
+    Checking colorchoice v1.0.5
+    Checking block-buffer v0.10.4
+    Checking crypto-common v0.1.7
+    Checking anstream v1.0.0
+    Checking digest v0.10.7
+    Checking getrandom v0.2.17
+    Checking toml_write v0.1.2
+    Checking rand_core v0.6.4
+    Checking num-integer v0.1.46
+   Compiling heck v0.5.0
+    Checking sha2 v0.10.9
+    Checking indexmap v2.14.0
+    Checking winnow v0.7.15
+    Checking clap_lex v1.1.0
+    Checking strsim v0.11.1
+    Checking clap_builder v4.6.2
+   Compiling serde_derive v1.0.228
+   Compiling thiserror-impl v1.0.69
+   Compiling clap_derive v4.6.1
+    Checking ppv-lite86 v0.2.21
+    Checking rand_chacha v0.3.1
+    Checking rand v0.8.7
+    Checking clap v4.6.2
+    Checking target-api v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/target-api)
+    Checking num-bigint v0.4.8
+    Checking serde_spanned v0.6.9
+    Checking toml_datetime v0.6.11
+    Checking toml_edit v0.22.27
+    Checking runner v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/runner)
+    Checking trace v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/trace)
+    Checking timing v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/timing)
+    Checking model v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/model)
+    Checking corpus v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/corpus)
+    Checking toml v0.8.23
+    Checking differential v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/differential)
+    Checking report v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/report)
+    Checking minimizer v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/minimizer)
+    Checking cli v0.1.0 (/home/arkheionx/Documents/ETC/ecc-audit-engine/crates/cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 36s

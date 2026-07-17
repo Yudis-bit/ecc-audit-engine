@@ -1,0 +1,978 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "unix:1784302221",
+  "findings": [
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_0_x_carry",
+      "title": "Differential mismatch: fe_mul/0_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/0_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/0_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_1_x_carry",
+      "title": "Differential mismatch: fe_mul/1_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/1_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000003ffffff",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000003fffffe",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/1_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_2_x_carry",
+      "title": "Differential mismatch: fe_mul/2_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/2_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000007fffffe",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000007ffffff",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/2_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_p-1_x_carry",
+      "title": "Differential mismatch: fe_mul/p-1_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/p-1_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc30",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc31",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/p-1_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_0",
+      "title": "Differential mismatch: fe_mul/carry_x_0",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_0",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/carry_x_0",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_1",
+      "title": "Differential mismatch: fe_mul/carry_x_1",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_1",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000003ffffff",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000003fffffe",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/carry_x_1",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_2",
+      "title": "Differential mismatch: fe_mul/carry_x_2",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_2",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000007fffffe",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000007ffffff",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/carry_x_2",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_p-1",
+      "title": "Differential mismatch: fe_mul/carry_x_p-1",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_p-1",
+      "expected": {
+        "kind": "expected",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc30",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc31",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/carry_x_p-1",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_carry",
+      "title": "Differential mismatch: fe_mul/carry_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "000000000000000000000000000000000000000000000000000ffffff8000001",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "000000000000000000000000000000000000000000000000000ffffff8000000",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/carry_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_near_mid",
+      "title": "Differential mismatch: fe_mul/carry_x_near_mid",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_near_mid",
+      "expected": {
+        "kind": "expected",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/carry_x_near_mid",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_near_mid_x_carry",
+      "title": "Differential mismatch: fe_mul/near_mid_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL.so",
+        "sha256": "6f1ce3522b415e6b8bc5f9712c4c41c2a3e483b30f66efe6090e922ad009117c",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/near_mid_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL.so --case fe_mul/near_mid_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-point_add_G+(-G)",
+      "title": "Differential mismatch: point_add/G+(-G)",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_INFINITY_A.so",
+        "path": "targets/iso_iso_CORRUPT_INFINITY_A.so",
+        "sha256": "cdd9bed0592265279af87e91afa2ff606955fb29627bad008efc54371c9bb08b",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "point_add",
+      "input_case": "point_add/G+(-G)",
+      "expected": {
+        "kind": "expected",
+        "hex": "00",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_INFINITY_A.so --case point_add/G+(-G)",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "InfinityMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-scalar_n",
+      "title": "Differential mismatch: scalar/n",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "f4c33d9e945bcd9cc60fc8614a3b5ea245b1deec631efe31dda55973ee686065",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "scalar",
+      "input_case": "scalar/n",
+      "expected": {
+        "kind": "expected",
+        "hex": "00",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_SCALAR_BOUNARY.so --case scalar/n",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "InfinityMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-point_mul_n*G",
+      "title": "Differential mismatch: point_mul/n*G",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "f4c33d9e945bcd9cc60fc8614a3b5ea245b1deec631efe31dda55973ee686065",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "point_mul",
+      "input_case": "point_mul/n*G",
+      "expected": {
+        "kind": "expected",
+        "hex": "00",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_SCALAR_BOUNARY.so --case point_mul/n*G",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "InfinityMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-scalar_n",
+      "title": "Differential mismatch: scalar/n",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "scalar",
+      "input_case": "scalar/n",
+      "expected": {
+        "kind": "expected",
+        "hex": "00",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case scalar/n",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "InfinityMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_0_x_carry",
+      "title": "Differential mismatch: fe_mul/0_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/0_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/0_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_1_x_carry",
+      "title": "Differential mismatch: fe_mul/1_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/1_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000003ffffff",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000003fffffe",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/1_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_2_x_carry",
+      "title": "Differential mismatch: fe_mul/2_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/2_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000007fffffe",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000007ffffff",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/2_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_p-1_x_carry",
+      "title": "Differential mismatch: fe_mul/p-1_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/p-1_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc30",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc31",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/p-1_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_0",
+      "title": "Differential mismatch: fe_mul/carry_x_0",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_0",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/carry_x_0",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_1",
+      "title": "Differential mismatch: fe_mul/carry_x_1",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_1",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000003ffffff",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000003fffffe",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/carry_x_1",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_2",
+      "title": "Differential mismatch: fe_mul/carry_x_2",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_2",
+      "expected": {
+        "kind": "expected",
+        "hex": "0000000000000000000000000000000000000000000000000000000007fffffe",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0000000000000000000000000000000000000000000000000000000007ffffff",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/carry_x_2",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_p-1",
+      "title": "Differential mismatch: fe_mul/carry_x_p-1",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_p-1",
+      "expected": {
+        "kind": "expected",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc30",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefbfffc31",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/carry_x_p-1",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_carry",
+      "title": "Differential mismatch: fe_mul/carry_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "000000000000000000000000000000000000000000000000000ffffff8000001",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "000000000000000000000000000000000000000000000000000ffffff8000000",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/carry_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_carry_x_near_mid",
+      "title": "Differential mismatch: fe_mul/carry_x_near_mid",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/carry_x_near_mid",
+      "expected": {
+        "kind": "expected",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/carry_x_near_mid",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-fe_mul_near_mid_x_carry",
+      "title": "Differential mismatch: fe_mul/near_mid_x_carry",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "fe_mul",
+      "input_case": "fe_mul/near_mid_x_carry",
+      "expected": {
+        "kind": "expected",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000000",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "00000000000000000000000003ffffff00000000000000000000000000000001",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case fe_mul/near_mid_x_carry",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "ArithmeticMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-point_add_G+(-G)",
+      "title": "Differential mismatch: point_add/G+(-G)",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "point_add",
+      "input_case": "point_add/G+(-G)",
+      "expected": {
+        "kind": "expected",
+        "hex": "00",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case point_add/G+(-G)",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "InfinityMismatch"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "DIFF-point_mul_n*G",
+      "title": "Differential mismatch: point_mul/n*G",
+      "level": "Level2DynamicDivergence",
+      "category": "Differential",
+      "target": {
+        "name": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "path": "targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+        "sha256": "d3e563883380e00c91601c9197c4051038c7a3323a13917cfd4d5267ce5c7a29",
+        "architecture": "x86_64",
+        "compiler": null,
+        "flags": []
+      },
+      "operation": "point_mul",
+      "input_case": "point_mul/n*G",
+      "expected": {
+        "kind": "expected",
+        "hex": "00",
+        "text": null
+      },
+      "observed": {
+        "kind": "observed",
+        "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+        "text": null
+      },
+      "raw_evidence": [],
+      "minimized_reproducer": null,
+      "reproduction_command": "cargo run -p cli -- differential --target targets/iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so --case point_mul/n*G",
+      "false_positive_analysis": "Compare against reference model; confirm target build flags and ABI lengths.",
+      "impact_boundary": "Laboratory fixture only. Synthetic keys. Not a production vulnerability claim.",
+      "confidence": "High",
+      "mismatch": "InfinityMismatch"
+    }
+  ],
+  "leak_findings": [],
+  "timing": [],
+  "differential_summary": {
+    "target": "iso_iso_CORRUPT_FE_MUL__CORRUPT_INFINITY_A__CORRUPT_SCALAR_BOUNARY.so",
+    "total": 148,
+    "failures": 14,
+    "results_path": "reports/verification-run/raw/isolation/raw/differential_results.json"
+  },
+  "notes": [
+    "Authorized laboratory differential run.",
+    "No real-world secp256k1 vulnerability was tested or confirmed.",
+    "Authorized laboratory differential run.",
+    "No real-world secp256k1 vulnerability was tested or confirmed.",
+    "Authorized laboratory differential run.",
+    "No real-world secp256k1 vulnerability was tested or confirmed.",
+    "Authorized laboratory differential run.",
+    "No real-world secp256k1 vulnerability was tested or confirmed.",
+    "Authorized laboratory differential run.",
+    "No real-world secp256k1 vulnerability was tested or confirmed."
+  ]
+}

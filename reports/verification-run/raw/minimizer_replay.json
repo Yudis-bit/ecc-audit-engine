@@ -1,0 +1,126 @@
+[
+  {
+    "file": "MIN-fe_mul_0_x_carry.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_1_x_carry.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_2_x_carry.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_carry_x_0.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_carry_x_1.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_carry_x_2.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_carry_x_carry.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_carry_x_near_mid.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_carry_x_p-1.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_near_mid_x_carry.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-fe_mul_p-1_x_carry.json",
+    "mismatch": "ArithmeticMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "orig_nonzero_bytes": 1,
+      "min_pop": 8
+    }
+  },
+  {
+    "file": "MIN-point_add_G+(-G).json",
+    "mismatch": "InfinityMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "a_len": 65,
+      "b_len": 65
+    }
+  },
+  {
+    "file": "MIN-point_mul_n*G.json",
+    "mismatch": "InfinityMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "scalar_hw": 192
+    }
+  },
+  {
+    "file": "MIN-scalar_n.json",
+    "mismatch": "InfinityMismatch",
+    "replay_differs_from_correct": true,
+    "detail": {
+      "scalar_hw": 192
+    }
+  }
+]

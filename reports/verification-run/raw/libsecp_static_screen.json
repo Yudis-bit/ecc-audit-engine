@@ -1,0 +1,28 @@
+{
+  "function": "secp256k1_ec_pubkey_create",
+  "start_hex": "0x21aa0",
+  "end_hex": "0x21c90",
+  "branch_count": 8,
+  "branches_sample": [
+    "21ad1:\t0f 84 59 01 00 00    \tje     21c30 <secp256k1_ec_pubkey_create+0x190>",
+    "21aee:\t0f 84 5c 01 00 00    \tje     21c50 <secp256k1_ec_pubkey_create+0x1b0>",
+    "21afa:\t0f 84 70 01 00 00    \tje     21c70 <secp256k1_ec_pubkey_create+0x1d0>",
+    "21bf7:\t75 eb                \tjne    21be4 <secp256k1_ec_pubkey_create+0x144>",
+    "21c18:\t75 6d                \tjne    21c87 <secp256k1_ec_pubkey_create+0x1e7>",
+    "21c48:\teb bd                \tjmp    21c07 <secp256k1_ec_pubkey_create+0x167>",
+    "21c65:\teb de                \tjmp    21c45 <secp256k1_ec_pubkey_create+0x1a5>",
+    "21c85:\teb be                \tjmp    21c45 <secp256k1_ec_pubkey_create+0x1a5>"
+  ],
+  "call_count": 8,
+  "calls": [
+    "21b15:\te8 46 70 fe ff       \tcall   8b60 <secp256k1_scalar_set_b32>",
+    "21b99:\te8 72 19 ff ff       \tcall   13510 <secp256k1_ecmult_gen_gej>",
+    "21ba4:\te8 f7 4d fe ff       \tcall   69a0 <secp256k1_ge_set_gej>",
+    "21bbc:\te8 9f 6c fe ff       \tcall   8860 <secp256k1_ge_to_bytes>",
+    "21c3e:\t41 ff 96 b0 00 00 00 \tcall   QWORD PTR [r14+0xb0]",
+    "21c5e:\t41 ff 96 b0 00 00 00 \tcall   QWORD PTR [r14+0xb0]",
+    "21c7e:\t41 ff 96 b0 00 00 00 \tcall   QWORD PTR [r14+0xb0]",
+    "21c87:\te8 f4 04 fe ff       \tcall   2180 <__stack_chk_fail@plt>"
+  ],
+  "note": "Level1 static suspicion only \u2014 no secret data-flow proven. Branches include length/NULL checks in adapter and seckey_verify paths in library."
+}
