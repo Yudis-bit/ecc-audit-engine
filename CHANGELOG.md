@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.1] — 2026-08-06
+
+### Changed
+
+- Dependency maintenance: rand 0.8.7 → 0.10.2, thiserror 1.0.69 → 2.0.19, toml 0.8.23 → 1.1.4, num-bigint 0.4.8 → 0.5.1, libloading 0.8.9 → 0.9.0
+- Workspace version aligned with the release line (was still 0.1.0 at the v0.2.0 tag)
+
+### Fixed
+
+- `crates/corpus`: migrated to the rand 0.10 API (`RngCore` is no longer exported at the crate root; `fill_bytes` resolves via `rand::Rng`)
+
+### Verified
+
+- `./scripts/verify.sh` full gate suite green on Linux host (12/12 gates, including `trace_calibration` with valgrind 3.27.1 provisioned under `third_party/valgrind`)
+- `cargo fmt --all --check`, `cargo clippy --workspace --all-targets --all-features -- -D warnings`, `cargo test --workspace --all-features --locked`
+
 ## [0.2.0] — 2026-07-17
 
 ### Added
