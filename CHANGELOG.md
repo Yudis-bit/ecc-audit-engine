@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2] — 2026-08-06
+
+### Added
+
+- Adapter SDK documentation (`adapter-sdk/README.md`): complete C ABI specification (7 functions), build instructions, integration checklist, determinism requirements, FFI safety notes, corrupted target verification example, private target integration guidance, and limitations
+
 ## [0.2.1] — 2026-08-06
 
 ### Changed
