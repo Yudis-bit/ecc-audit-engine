@@ -126,7 +126,7 @@ checksum = "c8d4a3bb8b1e0c1050499d1815f5ab16d04f0959b233085fb31653fbfc9d98f9"
 
 [[package]]
 name = "cli"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "clap",
  "corpus",
@@ -154,7 +154,7 @@ checksum = "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570"
 
 [[package]]
 name = "corpus"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "hex",
  "model",
@@ -195,7 +195,7 @@ dependencies = [
 
 [[package]]
 name = "differential"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "corpus",
  "hex",
@@ -219,7 +219,7 @@ dependencies = [
 
 [[package]]
 name = "dyntrace"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "hex",
  "rand",
@@ -321,7 +321,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 
 [[package]]
 name = "minimizer"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "corpus",
  "differential",
@@ -334,7 +334,7 @@ dependencies = [
 
 [[package]]
 name = "model"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "hex",
  "num-bigint",
@@ -421,7 +421,7 @@ checksum = "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
 
 [[package]]
 name = "report"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "differential",
  "hex",
@@ -434,7 +434,7 @@ dependencies = [
 
 [[package]]
 name = "runner"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "libloading",
  "serde",
@@ -535,7 +535,7 @@ dependencies = [
 
 [[package]]
 name = "target-api"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "hex",
  "serde",
@@ -545,18 +545,18 @@ dependencies = [
 
 [[package]]
 name = "thiserror"
-version = "2.0.19"
+version = "2.0.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "09a43598840e33d5b0331f38c5e30d13bb11c11210a4b58f0d9b18a5a5eefcd9"
+checksum = "ec86235f5fcc2a73650310756d2ac5b138a5780bbbdfae3eeccec992c435ba4f"
 dependencies = [
  "thiserror-impl",
 ]
 
 [[package]]
 name = "thiserror-impl"
-version = "2.0.19"
+version = "2.0.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43cbfe0cf76104d42a574802844187e84a305e531ed54455f11fbde0f10541cd"
+checksum = "bc04cd3e1236dd4a98afca4569f2deb3f120e5422a4023be2cb683f8486292af"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -565,7 +565,7 @@ dependencies = [
 
 [[package]]
 name = "timing"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "rand",
  "runner",
@@ -614,7 +614,7 @@ checksum = "7d56353a2a665ad0f41a421187180aab746c8c325620617ad883a99a1cbe66d2"
 
 [[package]]
 name = "trace"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "hex",
  "runner",
